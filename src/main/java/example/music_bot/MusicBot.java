@@ -20,7 +20,7 @@ package example.music_bot;
 import java.util.*;
 
 import org.bukkit.*;
-import org.bukkit.block.NoteBlock;
+import org.bukkit.block.data.type.NoteBlock;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -239,10 +239,12 @@ public class MusicBot extends NNBaseEntity implements Controler {
 				int row = 0;
 				for (Neuron n : ai.getOutputNeurons()) {
 					if (n.isTriggered()) {
-						((NoteBlock) base.clone().add(row, 0, 0).getBlock()
-								.getState()).setRawNote((byte) n.getID());
-						((NoteBlock) base.clone().add(row, 0, 0).getBlock()
-								.getState()).play();
+						// TODO: From Alexis - setRawNote(byte...) needs to be replaced with setNote(Note).
+						// TODO: From Alexis - play() does not exist anymore
+//						((NoteBlock) base.clone().add(row, 0, 0).getBlock()
+//								.getState()).setRawNote((byte) n.getID());
+//						((NoteBlock) base.clone().add(row, 0, 0).getBlock()
+//								.getState()).play();
 						row++;
 
 					}

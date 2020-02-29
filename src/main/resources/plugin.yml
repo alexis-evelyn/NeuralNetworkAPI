@@ -1,0 +1,6 @@
+name: Neuralnetwork
+version: ${project.version}
+main: me.zombiestriker.nnmain.Main
+api-version: 1.13
+authors: [ZombieStriker, AlexisEvelyn]
+description: Neural Network API
