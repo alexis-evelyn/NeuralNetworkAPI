@@ -1,6 +1,14 @@
-name: Neuralnetwork
+name: NeuralNetwork
 version: ${project.version}
-main: me.zombiestriker.nnmain.Main
+main: me.zombie_striker.nnmain.Main
 api-version: 1.13
-authors: [ZombieStriker, AlexisEvelyn]
+authors: [ZombieStriker, Alexis Evelyn]
 description: Neural Network API
+
+commands:
+  nn:
+    description: Train The Neural Network With Demos
+    usage: /nn
+    permission: me.zombie_striker.demo
+    default: false
+    permission-message: You don't have the me.zombie_striker.demo permission.

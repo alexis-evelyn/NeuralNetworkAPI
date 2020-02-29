@@ -18,15 +18,11 @@ package me.zombie_striker.nnmain;
  **/
 
 
-import java.io.File;
-import java.io.IOException;
-
 import me.zombie_striker.neuralnetwork.*;
 import me.zombie_striker.neuralnetwork.neurons.*;
 import me.zombie_striker.neuralnetwork.neurons.input.*;
 
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
 @SuppressWarnings("unused")

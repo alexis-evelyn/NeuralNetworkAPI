@@ -20,7 +20,6 @@ package example.music_bot;
 import java.util.*;
 
 import org.bukkit.*;
-import org.bukkit.block.data.type.NoteBlock;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;

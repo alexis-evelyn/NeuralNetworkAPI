@@ -22,7 +22,6 @@ import java.util.*;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 import me.zombie_striker.neuralnetwork.neurons.*;
-import me.zombie_striker.neuralnetwork.util.LossHolder;
 
 public class NNAI implements ConfigurationSerializable {
 

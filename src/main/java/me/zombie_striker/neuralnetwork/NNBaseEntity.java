@@ -19,7 +19,6 @@ package me.zombie_striker.neuralnetwork;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 

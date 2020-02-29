@@ -112,6 +112,9 @@ public class Main extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
+		// TODO: Handle NPE
+		this.getCommand("nn").setExecutor(this);
+
 		// TODO: Remove these values. They were only needed back when the NNs
 		// did not implement ConfigurationSerializable
 		registerDemoEntity(BlackJackHelper.class);
