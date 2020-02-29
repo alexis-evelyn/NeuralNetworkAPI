@@ -231,11 +231,6 @@ public class Main extends JavaPlugin implements Listener {
 			return true;
 		}
 
-		if (!sender.isOp()) {
-			sender.sendMessage("Sorry, only OP players can access demo commands.");
-			return true;
-		}
-
 		if (args[0].equalsIgnoreCase("createNewNN")
 				|| args[0].equalsIgnoreCase("cnn")) {
 			if (args.length < 2) {
