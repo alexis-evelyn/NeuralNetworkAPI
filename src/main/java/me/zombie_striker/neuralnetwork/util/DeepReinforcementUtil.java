@@ -31,10 +31,10 @@ public class DeepReinforcementUtil {
 	 * Teaches the NN for an instantaneous, constant answer regarding a single
 	 * response. Useful for true-false situations
 	 * 
-	 * @param Base
+	 * @param base
 	 *            The NeuralEntity
 	 * @param neuronsThatShouldBeTrue
-	 *            Array of all neuons that should be equal to 1. The rest will try
+	 *            Array of all neurons that should be equal to 1. The rest will try
 	 *            to be decreased to -1;
 	 * @param repetitions
 	 *            the amount of repetitions for the training.
@@ -47,7 +47,7 @@ public class DeepReinforcementUtil {
 	 * Teaches the NN for an instantaneous, constant answer regarding a single
 	 * response. Useful for true-false situations
 	 * 
-	 * @param Base
+	 * @param base
 	 *            The NeuralEntity
 	 * @param neuronsThatShouldBeTrue
 	 *            Array of all neuons that should be equal to 1. The rest will try
@@ -79,7 +79,7 @@ public class DeepReinforcementUtil {
 	 * Teaches the NN for an instantaneous, constant answer regarding a single
 	 * response. Useful for true-false situations
 	 * 
-	 * @param Base
+	 * @param base
 	 *            the NeuralEntity
 	 * @param correctValues
 	 *            a Hashmap of all neurons and the values they should be equal to
@@ -95,7 +95,7 @@ public class DeepReinforcementUtil {
 	 * Teaches the NN for an instantaneous, constant answer regarding a single
 	 * response. Useful for true-false situations
 	 * 
-	 * @param Base
+	 * @param base
 	 *            the NeuralEntity
 	 * @param correctValues
 	 *            a Hashmap of all neurons and the values they should be equal to
@@ -298,7 +298,7 @@ public class DeepReinforcementUtil {
 	 * There will be no random checks for values. Values can sometimes get stuck in
 	 * local minimums with no way out.
 	 * 
-	 * @param Base
+	 * @param base
 	 *            the NeuralEntity
 	 * @param n
 	 *            The neuron that will be trained
@@ -318,7 +318,7 @@ public class DeepReinforcementUtil {
 	 * The reason this is done per-neuron is to allow for percentages to print out,
 	 * or the ability to cancel the training if needed.
 	 * 
-	 * @param Base
+	 * @param base
 	 *            the NeuralEntity
 	 * @param n
 	 *            The neuron that will be trained

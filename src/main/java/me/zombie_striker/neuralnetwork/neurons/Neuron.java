@@ -107,8 +107,7 @@ public class Neuron implements ConfigurationSerializable {
 	 * not have a pre-defined cut-off for what is and is not something, disable
 	 * thresholds.
 	 * 
-	 * @param should
-	 *            use thresholds
+	 * @param b should use thresholds
 	 * @return The neuron instance, so you can chain multiple methods if needed.
 	 */
 	public Neuron setUseThreshold(boolean b) {
@@ -162,8 +161,7 @@ public class Neuron implements ConfigurationSerializable {
 	 * 
 	 * Will return 0 if the provided neuron is not an output for this neuron
 	 * 
-	 * @param The
-	 *            output neuron to be tested
+	 * @param n The output neuron to be tested
 	 * @return the total output strength, or 0 if it is not an output.
 	 */
 	public double getOutputForNeuron(Neuron n) {

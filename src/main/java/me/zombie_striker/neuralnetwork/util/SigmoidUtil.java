@@ -14,7 +14,7 @@ package me.zombie_striker.neuralnetwork.util;
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ along with this program.  If not, see <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.
  **/
 
 public class SigmoidUtil {
