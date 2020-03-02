@@ -1,5 +1,12 @@
 package example.music_bot;
 
+/* Note From Alexis
+ * The Music Bot is Completely Broken
+ * The AI doesn't even process any data when told to learn
+ *
+ * DO NOT USE TO LEARN HOW TO MAKE A NEURAL NETWORK BOT!!!
+ */
+
 /**
  Copyright (C) 2017  Zombie_Striker
 
@@ -225,11 +232,12 @@ public class MusicBot extends NNBaseEntity implements Controler {
 
 		final int channels = this.trainingValues.length;
 
-		for (int i = 0; i < channels; i++) {
-			base.clone().add(i, 0, 0).getBlock().setType(Material.NOTE_BLOCK);
-		}
+//		for (int i = 0; i < channels; i++) {
+//			base.clone().add(i, 0, 0).getBlock().setType(Material.NOTE_BLOCK);
+//		}
 		new BukkitRunnable() {
 			int tick = 0;
+			Note note;
 
 			@SuppressWarnings("deprecation")
 			@Override
@@ -244,6 +252,10 @@ public class MusicBot extends NNBaseEntity implements Controler {
 //								.getState()).setRawNote((byte) n.getID());
 //						((NoteBlock) base.clone().add(row, 0, 0).getBlock()
 //								.getState()).play();
+
+						note = new Note(n.getID());
+						player.playNote(base, Instrument.GUITAR, note);
+
 						row++;
 
 					}
