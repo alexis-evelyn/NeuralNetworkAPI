@@ -1,4 +1,4 @@
-package example.bot_guesser;
+package me.zombie_striker.neuralnetwork.plugin.demo.bot_guesser;
 
 /**
  Copyright (C) 2017  Zombie_Striker

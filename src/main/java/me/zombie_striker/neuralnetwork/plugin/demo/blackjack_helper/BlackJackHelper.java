@@ -1,4 +1,4 @@
-package example.blackjack_helper;
+package me.zombie_striker.neuralnetwork.plugin.demo.blackjack_helper;
 
 /**
  Copyright (C) 2017  Zombie_Striker
@@ -23,7 +23,7 @@ import java.util.*;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-import example.blackjack_helper.QuickBlackJackHandler.Card;
+import me.zombie_striker.neuralnetwork.plugin.demo.blackjack_helper.QuickBlackJackHandler.Card;
 import me.zombie_striker.neuralnetwork.*;
 import me.zombie_striker.neuralnetwork.neurons.*;
 import me.zombie_striker.neuralnetwork.neurons.input.InputNumberNeuron;

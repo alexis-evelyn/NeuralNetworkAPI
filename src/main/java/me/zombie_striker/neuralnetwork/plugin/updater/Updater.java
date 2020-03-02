@@ -1,4 +1,4 @@
-package me.zombie_striker.nnmain;
+package me.zombie_striker.neuralnetwork.plugin.updater;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;

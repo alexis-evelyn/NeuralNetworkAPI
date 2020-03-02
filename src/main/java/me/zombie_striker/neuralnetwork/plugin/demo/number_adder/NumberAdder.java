@@ -1,4 +1,4 @@
-package example.number_adder;
+package me.zombie_striker.neuralnetwork.plugin.demo.number_adder;
 
 /**
  Copyright (C) 2017  Zombie_Striker

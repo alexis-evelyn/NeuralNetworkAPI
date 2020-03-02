@@ -1,4 +1,4 @@
-package me.zombie_striker.nnmain;
+package me.zombie_striker.neuralnetwork.plugin.commands;
 
 /**
  Copyright (C) 2017  Zombie_Striker
@@ -23,7 +23,7 @@ public enum HelpPages {
 	one(ChatColor.GOLD+"--==Description: Page 1/3 ==--",
 		"NeuralNetworkAPI is a plugin aimed on adding NeuralNetworks to minecraft.",
 		"Pages:",
-		"-Desctipion (Current)",
+		"-Description (Current)",
 		"-How to use",
 		"-Commands"
 		),

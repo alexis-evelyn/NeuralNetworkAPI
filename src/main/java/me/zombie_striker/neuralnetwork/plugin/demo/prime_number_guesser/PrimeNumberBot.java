@@ -1,4 +1,4 @@
-package example.prime_number_guesser;
+package me.zombie_striker.neuralnetwork.plugin.demo.prime_number_guesser;
 
 /**
  Copyright (C) 2017  Zombie_Striker

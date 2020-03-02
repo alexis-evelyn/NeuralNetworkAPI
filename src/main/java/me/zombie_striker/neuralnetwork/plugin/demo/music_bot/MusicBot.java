@@ -1,4 +1,4 @@
-package example.music_bot;
+package me.zombie_striker.neuralnetwork.plugin.demo.music_bot;
 
 /* Note From Alexis
  * The Music Bot is Completely Broken
@@ -36,7 +36,7 @@ import me.zombie_striker.neuralnetwork.neurons.*;
 import me.zombie_striker.neuralnetwork.neurons.input.*;
 import me.zombie_striker.neuralnetwork.senses.Sensory2D_Numbers;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
-import me.zombie_striker.nnmain.Main;
+import me.zombie_striker.neuralnetwork.plugin.Main;
 
 public class MusicBot extends NNBaseEntity implements Controler {
 

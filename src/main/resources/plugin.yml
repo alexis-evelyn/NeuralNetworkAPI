@@ -1,14 +1,18 @@
 name: NeuralNetwork
 version: ${project.version}
-main: me.zombie_striker.nnmain.Main
+main: me.zombie_striker.neuralnetwork.plugin.Main
 api-version: 1.13
 authors: [ZombieStriker, Alexis Evelyn]
 description: Neural Network API
+load: STARTUP
+database: false
 
 commands:
-  nn:
-    description: Train The Neural Network With Demos
-    usage: /nn
-    permission: me.zombie_striker.demo
+  neuralnetwork:
+    aliases: [nn, ai]
+    description: Test the Neural Network API
+    usage: /neuralnetwork help 2
+    permission-notes: I, Alexis, cannot make up my mind on what the base permission node should be. I'll remove this message when I've made up my mind.
+    permission: me.zombie_striker.neuralnetwork.plugin.demo
     default: false
     permission-message: You don't have the me.zombie_striker.demo permission.

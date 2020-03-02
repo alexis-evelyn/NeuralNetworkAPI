@@ -1,4 +1,4 @@
-package example.swearfilter;
+package me.zombie_striker.neuralnetwork.plugin.demo.swearfilter;
 
 /**
  Copyright (C) 2017  Zombie_Striker
@@ -18,7 +18,7 @@ package example.swearfilter;
  **/
 
 import me.zombie_striker.neuralnetwork.NeuralNetwork;
-import me.zombie_striker.nnmain.Main;
+import me.zombie_striker.neuralnetwork.plugin.Main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

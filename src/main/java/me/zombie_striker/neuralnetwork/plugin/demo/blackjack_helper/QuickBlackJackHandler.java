@@ -1,4 +1,4 @@
-package example.blackjack_helper;
+package me.zombie_striker.neuralnetwork.plugin.demo.blackjack_helper;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package example.swearfilter;
+package me.zombie_striker.neuralnetwork.plugin.demo.swearfilter;
 
 /**
  Copyright (C) 2017  Zombie_Striker

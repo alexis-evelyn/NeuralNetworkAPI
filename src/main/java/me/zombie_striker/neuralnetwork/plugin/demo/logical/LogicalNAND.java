@@ -1,4 +1,4 @@
-package example.logical;
+package me.zombie_striker.neuralnetwork.plugin.demo.logical;
 
 /**
  Copyright (C) 2017  Zombie_Striker
@@ -30,17 +30,17 @@ import me.zombie_striker.neuralnetwork.neurons.input.InputBooleanNeuron;
 import me.zombie_striker.neuralnetwork.senses.Sensory2D_Booleans;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
 
-public class LogicalXOR extends NNBaseEntity implements Controler {
+public class LogicalNAND extends NNBaseEntity implements Controler {
 
 	public Sensory2D_Booleans binary = new Sensory2D_Booleans(1, 2);
 
-	public LogicalXOR(boolean createAI) {
+	public LogicalNAND(boolean createAI) {
 		this.controler = this;
 
 		if (createAI) {
 			/**
 			 * If createAI is true, then generate the AI with 3 layers (i.e, 1
-			 * hidden layer), 2 inputs, 5 neurons, and 2 bias neurons. After
+			 * hidden layer), 2 inputs, 3 neurons, and 2 bias neurons. After
 			 * that, connect all the neurons.
 			 * 
 			 * If you want to test using random inputs (what should be done, but
@@ -53,7 +53,7 @@ public class LogicalXOR extends NNBaseEntity implements Controler {
 						this.binary);
 			}
 
-			for (int neurons = 0; neurons < 5; neurons++) {
+			for (int neurons = 0; neurons < 3; neurons++) {
 				Neuron.generateNeuronStatically(ai, 1);
 			}
 			BiasNeuron.generateNeuronStatically(ai, 0);
@@ -62,6 +62,7 @@ public class LogicalXOR extends NNBaseEntity implements Controler {
 			connectNeurons();
 		}
 	}
+
 	
 	public String learn() {
 		/**
@@ -84,7 +85,7 @@ public class LogicalXOR extends NNBaseEntity implements Controler {
 		binary.changeValueAt(0, 1,
 				ThreadLocalRandom.current().nextBoolean());
 		boolean[] thought = tickAndThink();
-		boolean logic = (binary.getBooleanAt(0, 0) != binary.getBooleanAt(0, 1));
+		boolean logic = !(binary.getBooleanAt(0, 0)&& binary.getBooleanAt(0, 1));
 		boolean wasCorrect = (logic == thought[0]);
 		this.getAccuracy().addEntry(wasCorrect);
 
@@ -137,7 +138,7 @@ public class LogicalXOR extends NNBaseEntity implements Controler {
 
 	@Override
 	public NNBaseEntity clone() {
-		LogicalXOR thi = new LogicalXOR(false);
+		LogicalNAND thi = new LogicalNAND(false);
 		thi.ai = this.ai;
 		return thi;
 	}
@@ -146,7 +147,7 @@ public class LogicalXOR extends NNBaseEntity implements Controler {
 	public void setBase(NNBaseEntity t) {
 	}
 
-	public LogicalXOR(Map<String, Object> map) {
+	public LogicalNAND(Map<String, Object> map) {
 		super(map);
 	}
 

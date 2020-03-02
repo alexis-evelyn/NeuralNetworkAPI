@@ -1,4 +1,4 @@
-package example.logical;
+package me.zombie_striker.neuralnetwork.plugin.demo.logical;
 
 /**
  Copyright (C) 2017  Zombie_Striker
@@ -30,11 +30,11 @@ import me.zombie_striker.neuralnetwork.neurons.input.InputBooleanNeuron;
 import me.zombie_striker.neuralnetwork.senses.Sensory2D_Booleans;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
 
-public class LogicalOR extends NNBaseEntity implements Controler {
+public class LogicalNOR extends NNBaseEntity implements Controler {
 
 	public Sensory2D_Booleans binary = new Sensory2D_Booleans(1, 2);
 
-	public LogicalOR(boolean createAI) {
+	public LogicalNOR(boolean createAI) {
 		this.controler = this;
 
 		if (createAI) {
@@ -61,7 +61,6 @@ public class LogicalOR extends NNBaseEntity implements Controler {
 			connectNeurons();
 		}
 	}
-
 	
 	public String learn() {
 		/**
@@ -84,7 +83,7 @@ public class LogicalOR extends NNBaseEntity implements Controler {
 		binary.changeValueAt(0, 1,
 				ThreadLocalRandom.current().nextBoolean());
 		boolean[] thought = tickAndThink();
-		boolean logic = (binary.getBooleanAt(0, 0) || binary.getBooleanAt(0, 1));
+		boolean logic = !(binary.getBooleanAt(0, 0) || binary.getBooleanAt(0, 1));
 		boolean wasCorrect = (logic == thought[0]);
 		this.getAccuracy().addEntry(wasCorrect);
 
@@ -137,7 +136,7 @@ public class LogicalOR extends NNBaseEntity implements Controler {
 
 	@Override
 	public NNBaseEntity clone() {
-		LogicalOR thi = new LogicalOR(false);
+		LogicalNOR thi = new LogicalNOR(false);
 		thi.ai = this.ai;
 		return thi;
 	}
@@ -145,7 +144,7 @@ public class LogicalOR extends NNBaseEntity implements Controler {
 	@Override
 	public void setBase(NNBaseEntity base) {
 	}
-	public LogicalOR(Map<String,Object> map) {
+	public LogicalNOR(Map<String,Object> map) {
 		super(map);
 	}
 }

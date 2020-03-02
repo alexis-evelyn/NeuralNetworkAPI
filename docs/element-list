@@ -1,10 +1,10 @@
-example.blackjack_helper
-example.bot_guesser
-example.logical
-example.music_bot
-example.number_adder
-example.prime_number_guesser
-example.swearfilter
+me.zombie_striker.neuralnetwork.plugin.demo.blackjack_helper
+me.zombie_striker.neuralnetwork.plugin.demo.bot_guesser
+me.zombie_striker.neuralnetwork.plugin.demo.logical
+me.zombie_striker.neuralnetwork.plugin.demo.music_bot
+me.zombie_striker.neuralnetwork.plugin.demo.number_adder
+me.zombie_striker.neuralnetwork.plugin.demo.prime_number_guesser
+me.zombie_striker.neuralnetwork.plugin.demo.swearfilter
 me.zombie_striker.neuralnetwork
 me.zombie_striker.neuralnetwork.grapher
 me.zombie_striker.neuralnetwork.neurons

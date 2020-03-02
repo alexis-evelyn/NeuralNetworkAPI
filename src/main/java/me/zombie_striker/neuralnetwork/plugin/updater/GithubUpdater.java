@@ -1,4 +1,4 @@
-package me.zombie_striker.nnmain;
+package me.zombie_striker.neuralnetwork.plugin.updater;
 
 import java.io.*;
 import java.net.*;
