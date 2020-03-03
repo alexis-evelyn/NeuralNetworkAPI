@@ -29,7 +29,7 @@ public class NNBaseEntity implements ConfigurationSerializable {
 
 	public NNAI ai;
 
-	public Controler controler;
+	public Controller controller;
 	public boolean shouldLearn = false;
 
 	// TODO: Default accuracy is 500. This makes sure slight changes to the
@@ -126,8 +126,8 @@ public class NNBaseEntity implements ConfigurationSerializable {
 		return null;
 	}
 
-	public Controler getControler() {
-		return controler;
+	public Controller getController() {
+		return controller;
 	}
 
 	public boolean shouldLearn() {
@@ -154,17 +154,17 @@ public class NNBaseEntity implements ConfigurationSerializable {
 		this.ai = (NNAI) map.get("ai");
 		this.ai.entity = this;
 		if (map.containsKey("c")) {
-			this.controler = (Controler) map.get("c");
-		} else if (this instanceof Controler) {
-			this.controler = (Controler) this;
+			this.controller = (Controller) map.get("c");
+		} else if (this instanceof Controller) {
+			this.controller = (Controller) this;
 		}
 	}
 
 	@Override
 	public Map<String, Object> serialize() {
 		Map<String, Object> m = new HashMap<String, Object>();
-		if (this.controler != this)
-			m.put("c", controler);
+		if (this.controller != this)
+			m.put("c", controller);
 		m.put("ai", ai);
 		return m;
 	}

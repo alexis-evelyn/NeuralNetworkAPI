@@ -20,7 +20,7 @@ package me.zombie_striker.neuralnetwork;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
-public interface Controler extends ConfigurationSerializable {
+public interface Controller extends ConfigurationSerializable {
 	/**
 	 * This is what will cause the AI to think. The return is a message that will be
 	 * printed to console.

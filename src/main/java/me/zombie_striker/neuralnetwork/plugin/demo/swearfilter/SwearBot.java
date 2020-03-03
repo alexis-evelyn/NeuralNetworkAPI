@@ -29,7 +29,7 @@ import me.zombie_striker.neuralnetwork.neurons.input.InputLetterNeuron;
 import me.zombie_striker.neuralnetwork.senses.Sensory2D_Letters;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
 
-public class SwearBot extends NNBaseEntity implements Controler {
+public class SwearBot extends NNBaseEntity implements Controller {
 
 	public static char[] letters = InputLetterNeuron.letters;
 	//Returns capital letters A-Z and 0-9
@@ -84,7 +84,7 @@ public class SwearBot extends NNBaseEntity implements Controler {
 
 			connectNeurons();
 		}
-		this.controler = this;
+		this.controller = this;
 
 		this.setNeuronsPerRow(0, letters.length);
 

@@ -29,7 +29,7 @@ import me.zombie_striker.neuralnetwork.neurons.input.InputBooleanNeuron;
 import me.zombie_striker.neuralnetwork.senses.Sensory2D_Booleans;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
 
-public class NumberAdder extends NNBaseEntity implements Controler {
+public class NumberAdder extends NNBaseEntity implements Controller {
 
 	public Sensory2D_Booleans binary = new Sensory2D_Booleans(4, 10);
 
@@ -62,7 +62,7 @@ public class NumberAdder extends NNBaseEntity implements Controler {
 			connectNeurons();
 			setNeuronsPerRow(0, max_bytes);
 		}
-		this.controler = this;
+		this.controller = this;
 	}
 
 	public String learn() {

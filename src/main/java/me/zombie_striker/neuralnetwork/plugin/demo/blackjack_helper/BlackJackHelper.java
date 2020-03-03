@@ -30,7 +30,7 @@ import me.zombie_striker.neuralnetwork.neurons.input.InputNumberNeuron;
 import me.zombie_striker.neuralnetwork.senses.Sensory2D_Numbers;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
 
-public class BlackJackHelper extends NNBaseEntity implements Controler {
+public class BlackJackHelper extends NNBaseEntity implements Controller {
 
 	/**
 	 * This bot will help you play blackjack. Given your hand, it will tell you if
@@ -78,7 +78,7 @@ public class BlackJackHelper extends NNBaseEntity implements Controler {
 			BiasNeuron.generateNeuronStatically(ai, 0);
 			connectNeurons();
 		}
-		this.controler = this;
+		this.controller = this;
 		this.setNeuronsPerRow(0, 10);
 	}
 

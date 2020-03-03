@@ -38,7 +38,7 @@ import me.zombie_striker.neuralnetwork.senses.Sensory2D_Numbers;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
 import me.zombie_striker.neuralnetwork.plugin.Main;
 
-public class MusicBot extends NNBaseEntity implements Controler {
+public class MusicBot extends NNBaseEntity implements Controller {
 
 	/**
 	 * I have not actually updated this class, as this was one of the first bots
@@ -96,7 +96,7 @@ public class MusicBot extends NNBaseEntity implements Controler {
 
 			connectNeurons();
 		}
-		this.controler = this;
+		this.controller = this;
 	}
 
 	// TODO: This is used for denoting pitch. All conversions from decimal to

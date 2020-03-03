@@ -30,12 +30,12 @@ import me.zombie_striker.neuralnetwork.neurons.input.InputBooleanNeuron;
 import me.zombie_striker.neuralnetwork.senses.Sensory2D_Booleans;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
 
-public class LogicalNAND extends NNBaseEntity implements Controler {
+public class LogicalNAND extends NNBaseEntity implements Controller {
 
 	public Sensory2D_Booleans binary = new Sensory2D_Booleans(1, 2);
 
 	public LogicalNAND(boolean createAI) {
-		this.controler = this;
+		this.controller = this;
 
 		if (createAI) {
 			/**

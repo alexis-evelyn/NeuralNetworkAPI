@@ -87,7 +87,7 @@ public class NeuralNetwork {
 	 * Triggered controler#update once.
 	 */
 	public String triggerOnce() {
-		String a = base.controler.update();
+		String a = base.controller.update();
 		messages.add(a);
 		return a;
 	}
@@ -96,7 +96,7 @@ public class NeuralNetwork {
 	 * Triggered controler#update once.
 	 */
 	public String learn() {
-		String a = base.controler.learn();
+		String a = base.controller.learn();
 		messages.add(a);
 		return a;
 	}

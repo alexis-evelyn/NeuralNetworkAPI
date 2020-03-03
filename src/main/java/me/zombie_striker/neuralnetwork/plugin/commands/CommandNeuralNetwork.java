@@ -1,14 +1,13 @@
 package me.zombie_striker.neuralnetwork.plugin.commands;
 
 import me.zombie_striker.neuralnetwork.plugin.Main;
-import me.zombie_striker.neuralnetwork.plugin.demo.swearfilter.ExampleSwearListener;
 import me.zombie_striker.neuralnetwork.NNBaseEntity;
 import me.zombie_striker.neuralnetwork.NeuralNetwork;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +17,7 @@ import java.util.List;
 public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
     Main plugin;
     private File NeuralNetworkData;
+    private FileConfiguration NeuralNetworkDataConfig;
 
     /**
      * If you are creating your own plugin using the NNAPI, do not use the
@@ -27,6 +27,7 @@ public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
 
     public CommandNeuralNetwork(Main main) {
         this.plugin = main;
+        this.NeuralNetworkDataConfig = this.plugin.getConfig();
         this.NeuralNetworkData = new File(this.plugin.getDataFolder(), "NNData.yml");
         neuralnetwork = new NeuralNetwork(main);
 
@@ -52,13 +53,13 @@ public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
                 || args[0].equalsIgnoreCase("cnn")) {
             if (args.length < 2) {
                 sender.sendMessage("You must specify which NN you want to create. Choose one of the following:");
-                for (Class<?> c : getRegisteredDemoEntityClasses()) {
+                for (Class<?> c : this.plugin.getDemos()) {
                     sender.sendMessage("-" + c.getSimpleName());
                 }
                 return true;
             }
             NNBaseEntity base = null;
-            for (Class<?> c : getRegisteredDemoEntityClasses()) {
+            for (Class<?> c : this.plugin.getDemos()) {
                 if (args[1].equalsIgnoreCase(c.getSimpleName())) {
                     try {
                         try {
@@ -77,7 +78,7 @@ public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
             }
             if (base == null) {
                 sender.sendMessage("You need to provide a valid bot type. Choose one of the following.");
-                for (Class<?> c : getRegisteredDemoEntityClasses()) {
+                for (Class<?> c : this.plugin.getDemos()) {
                     sender.sendMessage("-" + c.getSimpleName());
                 }
                 return true;
@@ -124,7 +125,7 @@ public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
         }
 
         if (args[0].equalsIgnoreCase("test")) {
-            this.getNN().getCurrentNeuralNetwork().getControler()
+            this.getNN().getCurrentNeuralNetwork().getController()
                     .setInputs(sender, args);
             sender.sendMessage(this.getNN().triggerOnce());
             return true;
@@ -142,9 +143,9 @@ public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
         if (args[0].equalsIgnoreCase("save")) {
             if (args.length > 1) {
                 String id = args[1];
-                this.plugin.config.set(id, this.getNN().getCurrentNeuralNetwork());
+                this.NeuralNetworkDataConfig.set(id, this.getNN().getCurrentNeuralNetwork());
                 try {
-                    this.plugin.config.save(this.NeuralNetworkData);
+                    this.NeuralNetworkDataConfig.save(this.NeuralNetworkData);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -157,11 +158,11 @@ public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
         if (args[0].equalsIgnoreCase("load")) {
             if (args.length > 1) {
                 String id = args[1];
-                if (!this.plugin.config.contains(id)) {
+                if (!this.NeuralNetworkDataConfig.contains(id)) {
                     sender.sendMessage("The path in the config is null.");
                     return true;
                 }
-                NNBaseEntity b = (NNBaseEntity) this.plugin.config.get(id);
+                NNBaseEntity b = (NNBaseEntity) this.NeuralNetworkDataConfig.get(id);
                 if (b == null) {
                     sender.sendMessage("The NN is null.");
                     return true;
@@ -195,11 +196,11 @@ public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
         }
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("load")) {
-                for (String s : this.plugin.config.getConfigurationSection(
+                for (String s : this.NeuralNetworkDataConfig.getConfigurationSection(
                         "NeuralNetworks").getKeys(false))
                     this.onTabCompleteFilter(list, args[1], s);
             } else if (args[0].equalsIgnoreCase("createNewNN")) {
-                for (Class<?> c : getRegisteredDemoEntityClasses()) {
+                for (Class<?> c : this.plugin.getDemos()) {
                     this.onTabCompleteFilter(list, args[1], c.getSimpleName());
                 }
             }
@@ -220,10 +221,5 @@ public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
         // Close Grapher If Open
         if (this.getNN() != null && this.getNN().getGrapher() != null)
             this.getNN().closeGrapher();
-    }
-
-    // TODO: REMOVE ME IN FAVOR OF ConfigurationSerialization!!!
-    public static List<Class<? extends NNBaseEntity>> getRegisteredDemoEntityClasses() {
-        return new ArrayList<>();
     }
 }

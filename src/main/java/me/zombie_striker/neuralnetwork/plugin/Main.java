@@ -19,6 +19,7 @@ package me.zombie_striker.neuralnetwork.plugin;
 
 // Java Imports
 import java.io.File;
+import java.util.ArrayList;
 
 // Neural Network Imports
 import me.zombie_striker.neuralnetwork.*;
@@ -50,62 +51,24 @@ import me.zombie_striker.neuralnetwork.plugin.demo.prime_number_guesser.PrimeNum
 import me.zombie_striker.neuralnetwork.plugin.demo.swearfilter.SwearBot;
 
 public class Main extends JavaPlugin implements Listener {
-	public FileConfiguration config;
 	protected boolean enableMetrics = true;
 
 	@Deprecated
 	protected static Main plugin;
 
+	ArrayList<Class<? extends NNBaseEntity>> demos = new ArrayList();
+
 	CommandNeuralNetwork classNeuralNetwork;
-
-	/**
-	 * This class is used to make a Neural Network figure out whether a username
-	 * is valid
-	 */
-	public void onLoad() {
-		ConfigurationSerialization.registerClass(NNBaseEntity.class);
-		ConfigurationSerialization.registerClass(NNAI.class);
-		ConfigurationSerialization.registerClass(Layer.class);
-		ConfigurationSerialization.registerClass(Senses.class);
-		ConfigurationSerialization.registerClass(Controler.class);
-
-		ConfigurationSerialization.registerClass(Senses2D.class);
-		ConfigurationSerialization.registerClass(Senses3D.class);
-		ConfigurationSerialization.registerClass(Sensory2D_Booleans.class);
-		ConfigurationSerialization.registerClass(Sensory2D_Letters.class);
-		ConfigurationSerialization.registerClass(Sensory2D_Numbers.class);
-		ConfigurationSerialization.registerClass(Sensory3D_Booleans.class);
-		ConfigurationSerialization.registerClass(Sensory3D_Numbers.class);
-
-		ConfigurationSerialization.registerClass(Neuron.class);
-		ConfigurationSerialization.registerClass(InputNeuron.class);
-		ConfigurationSerialization.registerClass(InputBlockNeuron.class);
-		ConfigurationSerialization.registerClass(InputBooleanNeuron.class);
-		ConfigurationSerialization.registerClass(InputLetterNeuron.class);
-		ConfigurationSerialization.registerClass(InputNumberNeuron.class);
-		ConfigurationSerialization.registerClass(InputTickNeuron.class);
-		ConfigurationSerialization.registerClass(OutputNeuron.class);
-		ConfigurationSerialization.registerClass(BiasNeuron.class);
-
-		ConfigurationSerialization.registerClass(LogicalAND.class);
-		ConfigurationSerialization.registerClass(LogicalOR.class);
-		ConfigurationSerialization.registerClass(LogicalXOR.class);
-		ConfigurationSerialization.registerClass(LogicalXNOR.class);
-		ConfigurationSerialization.registerClass(LogicalNAND.class);
-		ConfigurationSerialization.registerClass(LogicalInverted.class);
-		ConfigurationSerialization.registerClass(LogicalNOR.class);
-
-		ConfigurationSerialization.registerClass(BlackJackHelper.class);
-		ConfigurationSerialization.registerClass(NumberAdder.class);
-		ConfigurationSerialization.registerClass(BotGuesser.class);
-		ConfigurationSerialization.registerClass(PrimeNumberBot.class);
-		ConfigurationSerialization.registerClass(MusicBot.class);
-		ConfigurationSerialization.registerClass(SwearBot.class);
-	}
 
 	@Override
 	public void onEnable() {
-		// Friendly To Using A Class Per Comamnd
+		// Register Classes For YAML Loading/Saving
+		registerClasses();
+
+		// Register List of Demos
+		registerDemos();
+
+		// Friendly To Using A Class Per Command
 		PluginCommand commandNeuralNetwork = this.getCommand("neuralnetwork");
 		classNeuralNetwork = new CommandNeuralNetwork(this);
 
@@ -124,32 +87,18 @@ public class Main extends JavaPlugin implements Listener {
 		}
 
 		// Set bStats Default Variable if Not Already Set
-		this.config = this.getConfig();
-		this.config.addDefault("bstats.enable", true);
-		this.config.options().copyDefaults();
+		FileConfiguration config = getConfig();
+		config.addDefault("bstats.enable", true);
+		config.options().copyDefaults();
 
 		// Save Config As Is
 		saveConfig();
 
-		this.enableMetrics = this.config.getBoolean("bstats.enable");
+		this.enableMetrics = config.getBoolean("bstats.enable");
 
 		checkForUpdate();
 
 		if (this.enableMetrics) {
-			/**
-			 * I use bStats metrics to monitor how many servers are using my
-			 * API. This does not send any personal/private information. This
-			 * only sends:
-			 *
-			 * the server version, Java version,
-			 * the plugin's version,
-			 * system architecture,
-			 * Core count,
-			 *
-			 * You can view the stats being collected at:
-			 * https://bstats.org/plugin/bukkit/NeuralNetworkAPI/6651
-			 */
-
 			/* Note For Zombie_Striker, I only changed the bStat id so my changes wouldn't interfere with your data.
 			 * If you would like, feel free to insert your id, 1712, back into the plugin's code.
 			 * UNLESS YOU ARE ZOMBIE_STRIKER, DO NOT CHANGE THE ID TO 1712!!!
@@ -167,6 +116,7 @@ public class Main extends JavaPlugin implements Listener {
 	@Override
 	public void onDisable() {
 		classNeuralNetwork.onDisable();
+		unregisterClasses();
 	}
 
 	private void checkForUpdate() {
@@ -193,5 +143,122 @@ public class Main extends JavaPlugin implements Listener {
 	@Deprecated
 	public static Main getMainClass() {
 		return plugin;
+	}
+
+	private void registerDemos() {
+		// me.zombie_striker.neuralnetwork.plugin.demo.logical.*;
+		this.demos.add(LogicalAND.class);
+		this.demos.add(LogicalOR.class);
+		this.demos.add(LogicalXOR.class);
+		this.demos.add(LogicalXNOR.class);
+		this.demos.add(LogicalNAND.class);
+		this.demos.add(LogicalInverted.class);
+		this.demos.add(LogicalNOR.class);
+
+		// me.zombie_striker.neuralnetwork.plugin.demo.*;
+		this.demos.add(BlackJackHelper.class);
+		this.demos.add(NumberAdder.class);
+		this.demos.add(BotGuesser.class);
+		this.demos.add(PrimeNumberBot.class);
+		this.demos.add(MusicBot.class);
+		this.demos.add(SwearBot.class);
+	}
+
+	// TODO: REMOVE ME IN FAVOR OF ConfigurationSerialization??? Was Zombie_Striker's wishes. Not Sure if Possible to Do!!!
+	// https://bukkit.org/threads/configurationserializable-and-how-to-use-it.271862/
+	public ArrayList<Class<? extends NNBaseEntity>> getDemos() {
+		return this.demos;
+	}
+
+	private void registerClasses() {
+		// me.zombie_striker.neuralnetwork.*;
+		ConfigurationSerialization.registerClass(NNBaseEntity.class);
+		ConfigurationSerialization.registerClass(NNAI.class);
+		ConfigurationSerialization.registerClass(Layer.class);
+		ConfigurationSerialization.registerClass(Senses.class);
+		ConfigurationSerialization.registerClass(Controller.class);
+
+		// me.zombie_striker.neuralnetwork.senses.*;
+		ConfigurationSerialization.registerClass(Senses2D.class);
+		ConfigurationSerialization.registerClass(Senses3D.class);
+		ConfigurationSerialization.registerClass(Sensory2D_Booleans.class);
+		ConfigurationSerialization.registerClass(Sensory2D_Letters.class);
+		ConfigurationSerialization.registerClass(Sensory2D_Numbers.class);
+		ConfigurationSerialization.registerClass(Sensory3D_Booleans.class);
+		ConfigurationSerialization.registerClass(Sensory3D_Numbers.class);
+
+		// me.zombie_striker.neuralnetwork.neurons.*;
+		ConfigurationSerialization.registerClass(Neuron.class);
+		ConfigurationSerialization.registerClass(InputNeuron.class);
+		ConfigurationSerialization.registerClass(InputBlockNeuron.class);
+		ConfigurationSerialization.registerClass(InputBooleanNeuron.class);
+		ConfigurationSerialization.registerClass(InputLetterNeuron.class);
+		ConfigurationSerialization.registerClass(InputNumberNeuron.class);
+		ConfigurationSerialization.registerClass(InputTickNeuron.class);
+		ConfigurationSerialization.registerClass(OutputNeuron.class);
+		ConfigurationSerialization.registerClass(BiasNeuron.class);
+
+		// me.zombie_striker.neuralnetwork.plugin.demo.logical.*;
+		ConfigurationSerialization.registerClass(LogicalAND.class);
+		ConfigurationSerialization.registerClass(LogicalOR.class);
+		ConfigurationSerialization.registerClass(LogicalXOR.class);
+		ConfigurationSerialization.registerClass(LogicalXNOR.class);
+		ConfigurationSerialization.registerClass(LogicalNAND.class);
+		ConfigurationSerialization.registerClass(LogicalInverted.class);
+		ConfigurationSerialization.registerClass(LogicalNOR.class);
+
+		// me.zombie_striker.neuralnetwork.plugin.demo.*;
+		ConfigurationSerialization.registerClass(BlackJackHelper.class);
+		ConfigurationSerialization.registerClass(NumberAdder.class);
+		ConfigurationSerialization.registerClass(BotGuesser.class);
+		ConfigurationSerialization.registerClass(PrimeNumberBot.class);
+		ConfigurationSerialization.registerClass(MusicBot.class);
+		ConfigurationSerialization.registerClass(SwearBot.class);
+	}
+
+	private void unregisterClasses() {
+		// me.zombie_striker.neuralnetwork.*;
+		ConfigurationSerialization.unregisterClass(NNBaseEntity.class);
+		ConfigurationSerialization.unregisterClass(NNAI.class);
+		ConfigurationSerialization.unregisterClass(Layer.class);
+		ConfigurationSerialization.unregisterClass(Senses.class);
+		ConfigurationSerialization.unregisterClass(Controller.class);
+
+		// me.zombie_striker.neuralnetwork.senses.*;
+		ConfigurationSerialization.unregisterClass(Senses2D.class);
+		ConfigurationSerialization.unregisterClass(Senses3D.class);
+		ConfigurationSerialization.unregisterClass(Sensory2D_Booleans.class);
+		ConfigurationSerialization.unregisterClass(Sensory2D_Letters.class);
+		ConfigurationSerialization.unregisterClass(Sensory2D_Numbers.class);
+		ConfigurationSerialization.unregisterClass(Sensory3D_Booleans.class);
+		ConfigurationSerialization.unregisterClass(Sensory3D_Numbers.class);
+
+		// me.zombie_striker.neuralnetwork.neurons.*;
+		ConfigurationSerialization.unregisterClass(Neuron.class);
+		ConfigurationSerialization.unregisterClass(InputNeuron.class);
+		ConfigurationSerialization.unregisterClass(InputBlockNeuron.class);
+		ConfigurationSerialization.unregisterClass(InputBooleanNeuron.class);
+		ConfigurationSerialization.unregisterClass(InputLetterNeuron.class);
+		ConfigurationSerialization.unregisterClass(InputNumberNeuron.class);
+		ConfigurationSerialization.unregisterClass(InputTickNeuron.class);
+		ConfigurationSerialization.unregisterClass(OutputNeuron.class);
+		ConfigurationSerialization.unregisterClass(BiasNeuron.class);
+
+		// me.zombie_striker.neuralnetwork.plugin.demo.logical.*;
+		ConfigurationSerialization.unregisterClass(LogicalAND.class);
+		ConfigurationSerialization.unregisterClass(LogicalOR.class);
+		ConfigurationSerialization.unregisterClass(LogicalXOR.class);
+		ConfigurationSerialization.unregisterClass(LogicalXNOR.class);
+		ConfigurationSerialization.unregisterClass(LogicalNAND.class);
+		ConfigurationSerialization.unregisterClass(LogicalInverted.class);
+		ConfigurationSerialization.unregisterClass(LogicalNOR.class);
+
+		// me.zombie_striker.neuralnetwork.plugin.demo.*;
+		ConfigurationSerialization.unregisterClass(BlackJackHelper.class);
+		ConfigurationSerialization.unregisterClass(NumberAdder.class);
+		ConfigurationSerialization.unregisterClass(BotGuesser.class);
+		ConfigurationSerialization.unregisterClass(PrimeNumberBot.class);
+		ConfigurationSerialization.unregisterClass(MusicBot.class);
+		ConfigurationSerialization.unregisterClass(SwearBot.class);
 	}
 }

@@ -29,7 +29,7 @@ import me.zombie_striker.neuralnetwork.neurons.input.InputNumberNeuron;
 import me.zombie_striker.neuralnetwork.senses.Sensory2D_Numbers;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
 
-public class PrimeNumberBot extends NNBaseEntity implements Controler {
+public class PrimeNumberBot extends NNBaseEntity implements Controller {
 
 	public Sensory2D_Numbers binary = new Sensory2D_Numbers(2, 10);
 
@@ -65,7 +65,7 @@ public class PrimeNumberBot extends NNBaseEntity implements Controler {
 			connectNeurons();
 		}
 		this.setNeuronsPerRow(0, 10);
-		this.controler = this;
+		this.controller = this;
 	}
 
 	private int lastNumber = 0;

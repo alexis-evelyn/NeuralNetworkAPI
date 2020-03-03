@@ -28,7 +28,7 @@ import me.zombie_striker.neuralnetwork.neurons.input.InputLetterNeuron;
 import me.zombie_striker.neuralnetwork.senses.Sensory2D_Letters;
 import me.zombie_striker.neuralnetwork.util.DeepReinforcementUtil;
 
-public class BotGuesser extends NNBaseEntity implements Controler {
+public class BotGuesser extends NNBaseEntity implements Controller {
 
 	/**
 	 * This bot checks to see if a user name is a "real account" based on its
@@ -74,7 +74,7 @@ public class BotGuesser extends NNBaseEntity implements Controler {
 
 			connectNeurons();
 		}
-		this.controler = this;
+		this.controller = this;
 
 		this.setNeuronsPerRow(0, letters.length);
 	}
