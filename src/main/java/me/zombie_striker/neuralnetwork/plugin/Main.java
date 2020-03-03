@@ -36,6 +36,7 @@ import org.bukkit.command.*;
 import org.bukkit.configuration.file.*;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 // Bstats
@@ -86,15 +87,23 @@ public class Main extends JavaPlugin implements Listener {
 			e.getStackTrace();
 		}
 
-		// Set bStats Default Variable if Not Already Set
-		FileConfiguration config = getConfig();
-		config.addDefault("bstats.enable", true);
-		config.options().copyDefaults();
+		// Save Default Config If Not Saved Yet
+		saveDefaultConfig();
 
-		// Save Config As Is
+		// Set Dynamically Generated Default Variables If Not Already Set
+		FileConfiguration config = getConfig();
+
+		// Get Current Plugin Info
+		PluginDescriptionFile pdf = this.getDescription(); // Gets plugin.yml
+
+		config.addDefault("version", pdf.getVersion());
+
+		config.options().copyDefaults(true);
 		saveConfig();
 
 		this.enableMetrics = config.getBoolean("bstats.enable");
+
+		getLogger().info(ChatColor.GOLD + "" + ChatColor.BOLD + "Bstats Enabled: " + this.enableMetrics);
 
 		checkForUpdate();
 

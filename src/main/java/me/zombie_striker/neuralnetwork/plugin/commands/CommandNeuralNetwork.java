@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,8 +28,8 @@ public class CommandNeuralNetwork implements CommandExecutor, TabCompleter {
 
     public CommandNeuralNetwork(Main main) {
         this.plugin = main;
-        this.NeuralNetworkDataConfig = this.plugin.getConfig();
         this.NeuralNetworkData = new File(this.plugin.getDataFolder(), "NNData.yml");
+        this.NeuralNetworkDataConfig = YamlConfiguration.loadConfiguration(NeuralNetworkData);
         neuralnetwork = new NeuralNetwork(main);
 
         // Disabled Because Results in "Plugin cannot be Null"
