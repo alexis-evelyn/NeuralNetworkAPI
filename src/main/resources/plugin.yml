@@ -6,6 +6,7 @@ description: Neural Network API
 # Version Infos
 version: ${project.version}
 api-version: 1.13
+last-different-config-version: 1.0
 
 # Contact Info
 authors: [ZombieStriker, Alexis Evelyn]

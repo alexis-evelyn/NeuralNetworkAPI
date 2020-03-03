@@ -1,13 +1,11 @@
-# I use bStats metrics to monitor how many servers are using my
-# API. This does not send any personal/private information. This
-# only sends:
-#
-# the server version, Java version,
-# the plugin's version,
-# system architecture,
-# Core count,
-#
-# You can view the stats being collected at:
-# https://bstats.org/plugin/bukkit/NeuralNetworkAPI/6651
 bstats:
-  enable: true
+  enabled: true
+  info:
+    - I use bStats metrics to monitor how many servers are using my API.
+    - This does not send any personal/private information.
+    - If you don't want to send any info, change enabled to false.
+  url: https://bstats.org/plugin/bukkit/NeuralNetworkAPI/6651
+
+version:
+  warning: Do Not Change These Unless You Know What You Are Doing!!!
+  config: 1.0

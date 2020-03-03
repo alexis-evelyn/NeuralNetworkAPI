@@ -96,14 +96,12 @@ public class Main extends JavaPlugin implements Listener {
 		// Get Current Plugin Info
 		PluginDescriptionFile pdf = getDescription(); // Gets plugin.yml
 
-		config.addDefault("version", pdf.getVersion());
+		config.addDefault("version.plugin", pdf.getVersion());
 
 		config.options().copyDefaults(true);
 		saveConfig();
 
-		this.enableMetrics = config.getBoolean("bstats.enable");
-
-		getLogger().info(ChatColor.GOLD + "" + ChatColor.BOLD + "Bstats Enabled: " + this.enableMetrics);
+		this.enableMetrics = config.getBoolean("bstats.enabled");
 
 		checkForUpdate();
 
@@ -119,6 +117,8 @@ public class Main extends JavaPlugin implements Listener {
 
 			// Optional: Add custom charts
 			// metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> "My value"));
+
+			getLogger().info(ChatColor.GOLD  + "bStats Enabled: " + metrics.isEnabled());
 		}
 	}
 
