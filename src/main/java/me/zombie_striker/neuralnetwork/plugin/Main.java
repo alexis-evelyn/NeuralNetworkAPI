@@ -94,7 +94,7 @@ public class Main extends JavaPlugin implements Listener {
 		FileConfiguration config = getConfig();
 
 		// Get Current Plugin Info
-		PluginDescriptionFile pdf = this.getDescription(); // Gets plugin.yml
+		PluginDescriptionFile pdf = getDescription(); // Gets plugin.yml
 
 		config.addDefault("version", pdf.getVersion());
 

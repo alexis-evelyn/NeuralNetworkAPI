@@ -1,18 +1,75 @@
+# Descriptive Info
 name: NeuralNetwork
-version: ${project.version}
-main: me.zombie_striker.neuralnetwork.plugin.Main
-api-version: 1.13
-authors: [ZombieStriker, Alexis Evelyn]
+prefix: Neural Network API
 description: Neural Network API
-load: STARTUP
-database: false
 
+# Version Infos
+version: ${project.version}
+api-version: 1.13
+
+# Contact Info
+authors: [ZombieStriker, Alexis Evelyn]
+website: https://github.com/alexis-evelyn/NeuralNetworkAPI
+
+# Loading Configuration
+main: me.zombie_striker.neuralnetwork.plugin.Main
+load: STARTUP
+depend: []
+softdepend: []
+loadbefore: []
+
+# Filler
+database: false
+awareness:
+  - !@UTF8
+
+  # Commands and Base Permissions
 commands:
   neuralnetwork:
     aliases: [nn, ai]
     description: Test the Neural Network API
     usage: /neuralnetwork help 2
-    permission-notes: I, Alexis, cannot make up my mind on what the base permission node should be. I'll remove this message when I've made up my mind.
-    permission: me.zombie_striker.neuralnetwork.plugin.demo
+    permission: me.alexisevelyn.neuralnetwork.demo
+    permission-message: You don't have the me.alexisevelyn.neuralnetwork.demo permission.
+
+
+# Default Permission Level If Not Explicitly Specified
+default-permission: false
+
+# Detailed Permissions
+# Notes: "default: false" causes console to not be able to run command
+permissions:
+  me.alexisevelyn.neuralnetwork.demo:
+    description: Test the Neural Network API
+    default: op
+    children: []
+
+  # These Should Be Dynamically Loaded (Replace With Subcommand Perms Instead)
+  me.zombie_striker.neuralnetwork.plugin.demo.blackjack:
+    description: Not Set
     default: false
-    permission-message: You don't have the me.zombie_striker.demo permission.
+    children: []
+  me.zombie_striker.neuralnetwork.plugin.demo.botguesser:
+    description: Not Set
+    default: false
+    children: []
+  me.zombie_striker.neuralnetwork.plugin.demo.logical:
+    description: Not Set
+    default: false
+    children: []
+  me.zombie_striker.neuralnetwork.plugin.demo.musicbot:
+    description: Not Set
+    default: false
+    children: []
+  me.zombie_striker.neuralnetwork.plugin.demo.numberadder:
+    description: Not Set
+    default: false
+    children: []
+  me.zombie_striker.neuralnetwork.plugin.demo.primenumberguesser:
+    description: Not Set
+    default: false
+    children: []
+  me.zombie_striker.neuralnetwork.plugin.demo.swearfilter:
+    description: Not Set
+    default: false
+    children: []
