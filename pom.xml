@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.zombie_striker</groupId>
-    <artifactId>neuralnetwork</artifactId>
-    <version>1.0.7</version>
+    <groupId>me.alexisevelyn</groupId>
+    <artifactId>NeuralNetwork</artifactId>
+    <version>1.0.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>NeuralNetwork</name>
@@ -17,8 +17,35 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <!-- NOTE: Due to a bug in Maven's Javadoc Generation, Javadoc Jars are Disabled For Now -->
+                <!--<defaultGoal>clean source:jar javadoc:jar deploy</defaultGoal>-->
+                <defaultGoal>clean source:jar deploy</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
-        <defaultGoal>clean package install</defaultGoal>
+        <defaultGoal>clean install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -61,6 +88,14 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+
+        <extensions>
+            <extension>
+                <groupId>io.packagecloud.maven.wagon</groupId>
+                <artifactId>maven-packagecloud-wagon</artifactId>
+                <version>0.0.6</version>
+            </extension>
+        </extensions>
     </build>
 
     <repositories>
@@ -92,4 +127,15 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>packagecloud-minecraft</id>
+            <url>packagecloud+https://packagecloud.io/AlexisEvelyn/Minecraft</url>
+        </repository>
+        <snapshotRepository>
+            <id>packagecloud-minecraft</id>
+            <url>packagecloud+https://packagecloud.io/AlexisEvelyn/Minecraft</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

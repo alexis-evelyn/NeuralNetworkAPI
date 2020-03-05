@@ -13,7 +13,7 @@ authors: [ZombieStriker, Alexis Evelyn]
 website: https://github.com/alexis-evelyn/NeuralNetworkAPI
 
 # Loading Configuration
-main: me.zombie_striker.neuralnetwork.plugin.Main
+main: me.alexisevelyn.neuralnetwork.plugin.Main
 load: STARTUP
 depend: []
 softdepend: []
