@@ -10,14 +10,46 @@
     <packaging>jar</packaging>
 
     <name>NeuralNetwork</name>
+    <description>Implementation of a Neural Network in Minecraft!!!</description>
 
-    <description>Neural Network API</description>
     <properties>
         <!-- Spigot/Paper Cannot Handle Letters, So A Separate Variable Exists For That Versioning -->
         <plugin.version>1.0.7</plugin.version>
+        <youtube.neato.explanation>https://www.youtube.com/watch?v=PrVEZwNIK4g</youtube.neato.explanation>
+
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <neato.longname>Neural Evolution of Augmenting Topologies Observable</neato.longname>
     </properties>
+
+    <developers>
+        <developer>
+            <id>Zombie_Striker</id>
+            <name>Zombie_Striker</name>
+            <organizationUrl>https://www.spigotmc.org/members/zombie_striker.62300/</organizationUrl>
+            <url>https://github.com/ZombieStriker/NeuralNetworkAPI</url>
+            <roles>
+                <role>founder</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>Alexis_Evelyn</id>
+            <name>Alexis Evelyn</name>
+            <email>alexis.a.evelyn@gmail.com</email>
+            <url>https://github.com/alexis-evelyn/</url>
+            <organization>Student/Hobbyist</organization>
+            <organizationUrl>https://play.alexisevelyn.me/</organizationUrl>
+            <roles>
+                <role>maintainer</role>
+                <role>developer</role>
+            </roles>
+            <timezone>America/New_York</timezone>
+            <properties>
+                <picUrl>https://i.imgur.com/Y6bgbla.png</picUrl>
+            </properties>
+        </developer>
+    </developers>
 
     <profiles>
         <profile>

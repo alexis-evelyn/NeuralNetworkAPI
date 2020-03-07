@@ -1,7 +1,7 @@
 # Descriptive Info
 name: NeuralNetwork
 prefix: Neural Network API
-description: Neural Network API
+description: ${project.description}
 
 # Version Infos
 version: ${plugin.version}
