@@ -4,7 +4,7 @@ prefix: Neural Network API
 description: Neural Network API
 
 # Version Infos
-version: ${project.version}
+version: ${plugin.version}
 api-version: 1.13
 last-different-config-version: 1.0
 

@@ -6,13 +6,15 @@
 
     <groupId>me.alexisevelyn</groupId>
     <artifactId>NeuralNetwork</artifactId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>${plugin.version}-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>NeuralNetwork</name>
 
     <description>Neural Network API</description>
     <properties>
+        <!-- Spigot/Paper Cannot Handle Letters, So A Separate Variable Exists For That Versioning -->
+        <plugin.version>1.0.7</plugin.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
