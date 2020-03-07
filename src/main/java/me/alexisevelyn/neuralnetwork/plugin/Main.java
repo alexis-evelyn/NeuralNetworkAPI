@@ -140,13 +140,14 @@ public class Main extends JavaPlugin implements Listener {
 		 */
 
 		//new Updater(this, 280241);
-		GithubUpdater.autoUpdate(this, "ZombieStriker","NeuralNetworkAPI","NeuralNetworkAPI.jar");
+//		GithubUpdater.autoUpdate(this, "ZombieStriker","NeuralNetworkAPI","NeuralNetworkAPI.jar");
 
-		if (Bukkit.getPluginManager().getPlugin("PluginConstructorAPI") == null)
-			// new DependencyDownloader(this, 276723);
-			GithubDependDownloader.autoUpdate(this,
-					new File(getDataFolder().getParentFile(), "PluginConstructorAPI.jar"), "ZombieStriker",
-					"PluginConstructorAPI", "PluginConstructorAPI.jar");
+		// This never actually appeared to be used, so I'll probably remove it
+//		if (Bukkit.getPluginManager().getPlugin("PluginConstructorAPI") == null)
+//			// new DependencyDownloader(this, 276723);
+//			GithubDependDownloader.autoUpdate(this,
+//					new File(getDataFolder().getParentFile(), "PluginConstructorAPI.jar"), "ZombieStriker",
+//					"PluginConstructorAPI", "PluginConstructorAPI.jar");
 	}
 
 	@Deprecated

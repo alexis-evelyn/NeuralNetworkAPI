@@ -50,31 +50,31 @@ permissions:
     children: []
 
   # These Should Be Dynamically Loaded (Replace With Subcommand Perms Instead)
-  me.zombie_striker.neuralnetwork.plugin.demo.blackjack:
+  me.alexisevelyn.neuralnetwork.plugin.demo.blackjack:
     description: Not Set
     default: false
     children: []
-  me.zombie_striker.neuralnetwork.plugin.demo.botguesser:
+  me.alexisevelyn.neuralnetwork.plugin.demo.botguesser:
     description: Not Set
     default: false
     children: []
-  me.zombie_striker.neuralnetwork.plugin.demo.logical:
+  me.alexisevelyn.neuralnetwork.plugin.demo.logical:
     description: Not Set
     default: false
     children: []
-  me.zombie_striker.neuralnetwork.plugin.demo.musicbot:
+  me.alexisevelyn.neuralnetwork.plugin.demo.musicbot:
     description: Not Set
     default: false
     children: []
-  me.zombie_striker.neuralnetwork.plugin.demo.numberadder:
+  me.alexisevelyn.neuralnetwork.plugin.demo.numberadder:
     description: Not Set
     default: false
     children: []
-  me.zombie_striker.neuralnetwork.plugin.demo.primenumberguesser:
+  me.alexisevelyn.neuralnetwork.plugin.demo.primenumberguesser:
     description: Not Set
     default: false
     children: []
-  me.zombie_striker.neuralnetwork.plugin.demo.swearfilter:
+  me.alexisevelyn.neuralnetwork.plugin.demo.swearfilter:
     description: Not Set
     default: false
     children: []
