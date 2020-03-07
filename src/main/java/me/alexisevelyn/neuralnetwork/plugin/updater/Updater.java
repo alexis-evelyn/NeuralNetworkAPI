@@ -297,6 +297,9 @@ public class Updater {
 
     /**
      * God damn it Gosling, <a href="http://stackoverflow.com/a/4547764/3809164">reference here.</a>
+     *
+     * @param downloadTo File to download
+     * @throws IOException Failed to download file
      */
     private void downloadIsSeperateBecauseGotoGotRemoved(File downloadTo) throws IOException {
         URL url = new URL(downloadURL);
@@ -305,6 +308,8 @@ public class Updater {
         connection.connect();
         if (connection.getResponseCode() >= 300 && connection.getResponseCode() < 400) {
             downloadURL = connection.getHeaderField("Location");
+
+            // TODO: Deal with infinite loop
             downloadIsSeperateBecauseGotoGotRemoved(downloadTo);
         } else {
             debug(connection.getResponseCode() + " " + connection.getResponseMessage() + " when requesting " + downloadURL);

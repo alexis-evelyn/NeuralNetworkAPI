@@ -19,6 +19,12 @@
 
         <neato.longname>Neural Evolution of Augmenting Topologies Observable</neato.longname>
 
+        <!-- Alternative to Putting License Info In Every Java File -->
+        <copyright.license>GPL-3</copyright.license>
+        <copyright.license.longname>GNU General Public License 3</copyright.license.longname>
+        <copyright.year.beginning>2017</copyright.year.beginning>
+        <copyright.year.current>2020</copyright.year.current>
+
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyy-MM-dd_HH.mm.ss_'UTC'</maven.build.timestamp.format>
