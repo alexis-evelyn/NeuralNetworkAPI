@@ -19,12 +19,16 @@ depend: []
 softdepend: []
 loadbefore: []
 
+# Build Info
+build-timestamp: ${build.timestamp}
+build-id: ${project.artifactId}-${project.version}-${build.timestamp}
+
 # Filler
 database: false
 awareness:
   - !@UTF8
 
-  # Commands and Base Permissions
+# Commands and Base Permissions
 commands:
   neuralnetwork:
     aliases: [nn, ai]
